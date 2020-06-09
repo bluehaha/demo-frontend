@@ -35,8 +35,8 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
-    },
-    before: require('./mock/mock-server.js')
+    }
+    // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
@@ -46,7 +46,9 @@ module.exports = {
       alias: {
         '@': resolve('src')
       }
-    }
+    },
+    // 要加這一行，不然 nginx 會沒辦法 proxy 過來
+    devtool: 'cheap-module-source-map'
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
