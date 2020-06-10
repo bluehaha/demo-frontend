@@ -43,6 +43,9 @@
 
       <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
+      <div class="hr-or">&nbsp;or&nbsp;</div>
+
+      <el-button :loading="loading" class="fb-button" style="width:100%;margin-top:30px;" @click.native.prevent="handleFbLogin">Facebook Login</el-button>
     </el-form>
   </div>
 </template>
@@ -99,6 +102,10 @@ export default {
           return false
         }
       })
+    },
+    handleFbLogin() {
+      // console.log(this.$route.query.redirect)
+      location.href = process.env.VUE_APP_DOMAIN_NAME + `/login/facebook?redirect=${this.$route.query.redirect}`
     }
   }
 }
@@ -212,5 +219,24 @@ $light_gray:#eee;
     cursor: pointer;
     user-select: none;
   }
+}
+
+.hr-or {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  padding: 0 40%;
+}
+.hr-or:before, .hr-or:after {
+     content: "";
+     flex: 1 1;
+     border-bottom: 2px solid #fff;
+     margin: auto;
+}
+
+.fb-button {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #3b5998;
 }
 </style>
