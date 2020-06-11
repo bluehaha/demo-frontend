@@ -61,6 +61,19 @@ export const constantRoutes = [
     }]
   },
 
+  {
+    path: '/weather',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Weather',
+        component: () => import('@/views/weather/index'),
+        meta: { title: 'Weather', icon: 'weather' }
+      }
+    ]
+  },
+
   // {
   //   path: '/example',
   //   component: Layout,
